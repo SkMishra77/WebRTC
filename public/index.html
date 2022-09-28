@@ -1,27 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>webRTC experiment</title>
-</head>
-<body>
-      <h1>webRTC</h1>
-      <div id="selectRoom">
-        <label for="">Type Room Id</label>
-        <input type="text" id="roomNumber">
-        <button id="goRoom">Go</button>
-    </div>
+  </head>
+  <body>
+    <section>
+      <div class="login-room-div">
+        <h1>WebRTC</h1>
+        <div id="selectRoom">
+          <label for="">Type Room Id</label>
+          <input type="text" id="roomNumber" />
+          <button id="goRoom">Go</button>
+        </div>
+      </div>
 
-    <div id="consultingRoom" style="display: none;">
-        <video id="localVideo" autoplay></video>
+      <div id="consultingRoom" style="display: none">
+        <div class="show-vid">
+          <video id="localVideo" autoplay></video>
+          <div class="cover-class back-img" id="cover-id"></div>
+        </div>
+
         <video id="remoteVideo" autoplay></video>
-
-    </div>
+      </div>
+      <div class="btn-container display-hidden" id="btn-container">
+        <div class="end-open-btn">
+          <button onclick="toggle(0)" class="btn" id="btn-off">
+            <img
+              src="https://img.icons8.com/ios-glyphs/30/000000/no-video.png"
+            />
+          </button>
+          <button onclick="toggle(1)" class="btn" id="btn-on">
+            <img
+              src="https://img.icons8.com/ios-glyphs/30/000000/live-video-on--v2.png"
+            />
+          </button>
+        </div>
+        <div class="close-btn" onclick="closeVideo()">
+          <button class="btn-close" id="btn-close">
+            <img
+              src="https://img.icons8.com/metro/52/000000/phone-disconnected.png"
+            />
+          </button>
+        </div>
+        <div class="voice-end-open-btn">
+          <button onclick="voiceToggle(0)" class="btn" id="voice-btn-off">
+            <img
+              src="https://img.icons8.com/ios/50/000000/block-microphone--v1.png"
+            />
+          </button>
+          <button onclick="voiceToggle(1)" class="btn" id="voice-btn-on">
+            <img src="https://img.icons8.com/ios/50/000000/microphone.png" />
+          </button>
+        </div>
+      </div>
+    </section>
 
     <script src="/socket.io/socket.io.js"></script>
     <script src="./main.js"></script>
-
-</body>
+  </body>
 </html>
