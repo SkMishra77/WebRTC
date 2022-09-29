@@ -1,0 +1,169 @@
+body{
+    margin: 0;
+    padding: 10px;
+    font-family: cursive;
+    background-color: rgb(4, 63, 63);
+}
+h1{
+    margin: 0;
+}
+.back-img{
+    background-color:black;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+}
+
+
+.btn{
+    border: 0;
+    border-radius: 100px;
+    background-color: cadetblue;
+    position: absolute;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+}
+
+.btn img {
+    padding: 25% 15%;
+}
+
+.blue{
+    background-color: rgb(127, 227, 255);
+    
+}
+
+.show-vid{
+    position: relative;
+    display: flex;
+}
+
+
+
+.end-open-btn{
+    display: flex;
+    bottom: 10%;
+    position: fixed;
+    left: 40%;
+    margin: 0;
+    justify-content: center;
+}
+
+
+.voice-end-open-btn{
+    display: flex;
+    bottom: 10%;
+    position: fixed;
+    right: 40%;
+    margin: 0;
+    justify-content: center;
+}
+
+
+.voice-end-open-btn img{
+    padding: 0;
+    width: 100%;
+}
+
+.close-btn{
+    position: relative;
+}
+
+
+.btn-close{
+    display: flex;
+    bottom: 20px;
+    position: fixed;
+    left: 48%;
+    right: 48%;
+    margin: 0;
+    justify-content: center;
+}
+
+.btn-close{
+    background-color: rgb(255, 0, 0);
+    width: 80px;
+    height: 80px;
+    padding-top: 10px;
+    border-radius: 100px;
+}
+
+
+.hidden{
+    opacity: 0;
+    background-color: aquamarine;
+}
+
+#consultingRoom{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.show-vid , .rec-vid {
+    width: 400px;
+}
+
+
+section{
+    position: relative;
+    width: 100%;
+}
+
+.display-hidden{
+    display: none;
+}
+
+.login-room-div{
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    margin: 0;
+    background-color: rgba(255, 255, 255, 0.5);
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 30%;
+    border-radius: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#selectRoom{
+    font-size: 18px;
+    margin-top: 20px;
+    font-weight: bold;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px 20px;
+}
+
+#selectRoom input{ 
+
+    font-size: 16px;
+    margin-bottom: 10px;
+    background-color: transparent;
+    background-color: rgba(255, 255, 255, 0.0);
+    height: 20px;
+    border: 0 solid black;
+    border-bottom-width: 4px;
+}
+
+#selectRoom input:focus{
+    outline: none;
+    border-color:rgb(68, 227, 255);
+}
+
+#selectRoom button{
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    background-color: rgba(31, 255, 57, 0.5);
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 20px;
+    width: 100px;
+    height: 30px;
+    margin-bottom: 20px;
+}
