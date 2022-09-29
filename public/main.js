@@ -116,7 +116,7 @@ socket.on('answer',event=>{
 socket.on('candidate',event=>{
     const candidate=new RTCIceCandidate({
         sdpMLineIndex:event.label,
-        candidate:event.label
+        candidate:event.candidate
     })
     if(candidate){
     rtcPeerConnection.addIceCandidate(candidate)
