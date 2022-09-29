@@ -18,20 +18,25 @@ io.on('connection',socket=>{
     socket.on('create or join',room=>{
         console.log('create or join to room ', room)
 
-        const myRoom=io.sockets.adapter.rooms[room] || {length:0}
-        const numClients = myRoom.length
+        var clients = io.sockets.adapter.rooms.get(room);
+        
+        var numClients = typeof clients !== "undefined" ? clients.size:0 ;
         console.log(room,'has',numClients,'clients')
-
+        
         if(numClients==0){
             socket.join(room)
+            clients = io.sockets.adapter.rooms.get(room);
+            numClients=clients.size
             socket.emit('created',room)
         }
         else if(numClients==1){
             socket.join(room)
-            socket.emit('Joined ',room)
+            console.log('cl size',clients.size)
+            socket.emit('joined',room)
         }
         else{
             socket.emit('full',room)
+            console.log("room full")
         }
     })
 
