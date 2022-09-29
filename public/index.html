@@ -20,13 +20,18 @@
 
       <div id="consultingRoom" style="display: none">
         <div class="show-vid">
-          <video id="localVideo" autoplay></video>
+          <video id="localVideo" autoplay width="100%"></video>
           <div class="cover-class back-img" id="cover-id"></div>
         </div>
-
-        <video id="remoteVideo" autoplay></video>
+        <div class="rec-vid">
+          <video id="remoteVideo" autoplay width="100%"></video>
+        </div>
       </div>
-      <div class="btn-container display-hidden" id="btn-container">
+
+
+
+
+      <!-- <div class="btn-container display-hidden" id="btn-container">
         <div class="end-open-btn">
           <button onclick="toggle(0)" class="btn" id="btn-off">
             <img
@@ -56,7 +61,7 @@
             <img src="https://img.icons8.com/ios/50/000000/microphone.png" />
           </button>
         </div>
-      </div>
+      </div> -->
     </section>
 
     <script src="/socket.io/socket.io.js"></script>

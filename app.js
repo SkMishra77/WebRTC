@@ -1,53 +1,58 @@
-const express = require('express');
-const app=express()
-let http=require('http').Server(app)
+const express = require("express");
+const app = express();
+let http = require("http").Server(app);
 
-const port= process.env.PORT || 3000
+const port = process.env.PORT || 3000;
 
-let io=require('socket.io')(http)
+let io = require("socket.io")(http);
 
-app.use(express.static('public'))
+app.use(express.static("public"));
 
-http.listen(port,()=>{
-    console.log('listening on',port)
-})
+http.listen(port, () => {
+  console.log("listening on", port);
+});
 
-io.on('connection',socket=>{
-    console.log('A User Connected')
+io.on("connection", (socket) => {
+  console.log("A User Connected");
 
-    socket.on('create or join',room=>{
-        console.log('create or join to room ', room)
+  socket.on("create or join", (room) => {
+    console.log("create or join to room ", room);
 
-        const myRoom=io.sockets.adapter.rooms[room] || {length:0}
-        const numClients = myRoom.length
-        console.log(room,'has',numClients,'clients')
+    var clients = io.sockets.adapter.rooms.get(room);
 
-        if(numClients==0){
-            socket.join(room)
-            socket.emit('created',room)
-        }
-        else if(numClients==1){
-            socket.join(room)
-            socket.emit('Joined ',room)
-        }
-        else{
-            socket.emit('full',room)
-        }
-    })
+    var numClients = typeof clients !== "undefined" ? clients.size : 0;
+    console.log(room, "has", numClients, "clients");
 
-    socket.on('ready',room =>{
-        socket.broadcast.to(room).emit('ready')
-    })
+    if (numClients == 0) {
+      socket.join(room);
+      clients = io.sockets.adapter.rooms.get(room);
+      numClients = clients.size;
+      socket.emit("created", room);
+    } else if (numClients == 1) {
+      socket.join(room);
+      console.log("cl size", clients.size);
+      socket.emit("joined", room);
+    } else {
+      var room_name = "vec-vid-" + String(clients.size+1)
+      console.log(room_name)
+      socket.emit("screenJoin",room_name)
 
-    socket.on('candidate',event=>{
-        socket.broadcast.to(event.room).emit('candidate',event)
-    })
-    socket.on('offer',event=>{
-        socket.broadcast.to(event.room).emit('offer',event.sdp)
-    })
-    socket.on('answer',event=>{
-        socket.broadcast.to(event.room).emit('answer',event.sdp)
-    })
+      socket.emit("full", room);
+      console.log("room full");
+    }
+  });
 
+  socket.on("ready", (room) => {
+    socket.broadcast.to(room).emit("ready");
+  });
 
-})
+  socket.on("candidate", (event) => {
+    socket.broadcast.to(event.room).emit("candidate", event);
+  });
+  socket.on("offer", (event) => {
+    socket.broadcast.to(event.room).emit("offer", event.sdp);
+  });
+  socket.on("answer", (event) => {
+    socket.broadcast.to(event.room).emit("answer", event.sdp);
+  });
+});

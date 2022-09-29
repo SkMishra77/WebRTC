@@ -8,9 +8,9 @@ h1{
     margin: 0;
 }
 .back-img{
-    background-color: black;
-    width: 640px;
-    height: 480px;
+    background-color:black;
+    width: 100px;
+    height: 100px;
     position: absolute;
 }
 
@@ -97,7 +97,14 @@ h1{
 
 #consultingRoom{
     display: flex;
+    justify-content: space-between;
+    flex-direction: row;
 }
+
+.show-vid , .rec-vid {
+    width: 400px;
+}
+
 
 section{
     position: relative;
